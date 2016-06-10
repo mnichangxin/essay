@@ -3,7 +3,7 @@ layout: default
 ---
 
 <ul class="post-list">
-  {% for post in site.posts %}
+  {% for post in paginator.posts %}
     <li class="list-item">
       <p class="date">
         <span class="glyphicon glyphicon-calendar"> </span> <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
@@ -32,35 +32,31 @@ layout: default
   {% endfor %}
 </ul>
 
-
-<!-- 遍历分页后的文章 -->
-{% for post in paginator.posts %}
-  <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-  <p class="author">
-    <span class="date">{{ post.date }}</span>
-  </p>
-  <div class="content">
-    {{ post.content }}
-  </div>
-{% endfor %}
-
-<!-- 分页链接 -->
 <div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="/page{{ paginator.previous_page }}" class="previous">Previous</a>
-  {% else %}
-    <span class="previous">Previous</span>
+
+  {% if paginator.total_pages > 1 %}
+
+    <ul class="pager">
+
+      {% if paginator.previous_page %}
+        <li class="previous"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><span aria-hidden="true">&larr;</span> Prev</a></li>
+      {% else %}
+        <li class="previous disabled"><a><span aria-hidden="true">&larr;</span> Prev</a></li>
+      {% endif %}
+
+      {% if paginator.next_page %}
+        <li class="next"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next <span aria-hidden="true">&rarr;</span></a></li>
+      {% else %}
+        <li class="next disabled"><a>Next <span aria-hidden="true">&rarr;</span></a></li>
+      {% endif %}
+
+    </ul>
+
   {% endif %}
-  <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
-  {% if paginator.next_page %}
-    <a href="/page{{ paginator.next_page }}" class="next">Next</a>
-  {% else %}
-    <span class="next ">Next</span>
-  {% endif %}
+
 </div>
 
+<!--
+<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+-->
 
-
-  <!--
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-  -->

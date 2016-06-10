@@ -6,21 +6,30 @@
         <h3 class="text-center">{{ site.title_description }}</h3>
       </div>
     </div>
-    <div class="row nav-menu">
-      <div class="col-md-3 col-xs-12">
+    <div class="nav-menu">
         <ul class="nav nav-pills">
           <li>
-            <a href="#"><span class="glyphicon glyphicon-home"></span> Home</a>
+            <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
           </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-th-list"></span> Dropdown <span class="caret"></span></a>
+          <li class="Date">
+            <a href="http://mnichangxin.github.io/essay" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-calendar"></span> Date <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
+              {% for post in site.posts %}
+                <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.date | date: "%b %-d, %Y" }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="categories">
+            <a href="/" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-list"></span> Category <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {% for category in site.categories %}
+
+                <li><a href="javascript:void(0);"><span class="badge">{{ category | last | size }}</span> {{ category | first }}</a></li>
+
+              {% endfor %}
             </ul>
           </li>
         </ul>
-      </div>
     </div>
   </div>
 </header>

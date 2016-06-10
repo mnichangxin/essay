@@ -1,22 +1,15 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
 # Site settings
 title: essay
-title_description: 记录自己的故事，这里有诗和远方的遐想
+title_description: 这里有诗和远方的遐想
 email: mnichangxin@163.com
-#description: 
-#baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://mnichangxin.github.io/essay" # the base hostname & protocol for your site
+url: "http://mnichangxin.github.io/essay"
 static_url: "/static"
-github_username:  mnichangxin
+github_username: mnichangxin
 
 # Build settings
 markdown: kramdown
 
-paginate: 2
+# paginate
+gems: [jekyll-paginate]
+paginate: 1
 paginate_path: "page:num"
