@@ -109,6 +109,10 @@ a:visited {
 	display: block;
 }
 
+/* post */
 .post-meta {
 	padding: 20px 0;
+}
+.post-tag {
+	text-indent: 10px;
 }
