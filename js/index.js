@@ -12,7 +12,7 @@ function scrollHandler() {
 	var topHeight = document.documentElement.scrollTop || document.body.scrollTop;
     var viewHeight = document.documentElement.clientHeight || document.body.clientHeight;
 
-	if (topHeight > viewHeight/2) {
+	if (topHeight > viewHeight/1.5) {
 
 		upBtn.style.display = 'block';
 
@@ -26,7 +26,7 @@ function scrollHandler() {
 
 function btnHandler() {
 
-	document.documentElement.scrollTop = document.body.scrollTop == 0;
+	document.documentElement.scrollTop = document.body.scrollTop = 0;
 
 	/*
 	var timer = setInterval(function() {
