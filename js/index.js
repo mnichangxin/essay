@@ -9,7 +9,7 @@ function scrollHandler() {
 
 	var upBtn = document.getElementsByClassName('to-top')[0];
 
-	var topHeight = document.documentElement.scrollTop || document.body.scrollTop,
+	var topHeight = document.documentElement.scrollTop || document.body.scrollTop;
     var viewHeight = document.documentElement.clientHeight || document.body.clientHeight;
 
 	if (topHeight > viewHeight/1.5) {
