@@ -32,11 +32,9 @@ a:visited {
 .text-center {
 	font-family: 'sans-serif';
 	color: #fff;
-	word-spacing: 10px;
 }
 .title h3 {
 	margin-top: 40px;
-	text-indent: 20px;
 }
 .nav-menu {
 	padding-top: 30px;
