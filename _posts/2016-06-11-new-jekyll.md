@@ -1,7 +1,7 @@
 ---
-    layout: post
-	title: "新的jekyll模板--Essay"
-	tags: jekyll 模板
+layout: post
+title: "新的jekyll模板--Essay"
+tags: jekyll 模板
 ---
 
 ## on template
