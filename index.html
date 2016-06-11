@@ -9,7 +9,7 @@ layout: default
         <span class="glyphicon glyphicon-calendar"> </span> <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
       </p>
       <h2 class="post-title">
-        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <a href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>
       </h2>
 
       <div class="post-content">
@@ -17,7 +17,7 @@ layout: default
       </div>
 
       <div class="read">
-        <a class="more" href="{{ post.url | prepend: site.baseurl }}"><span class="glyphicon glyphicon-plus"></span> Read&nbsp;More</a>
+        <a class="more" href="{{ post.url | prepend: site.url }}"><span class="glyphicon glyphicon-plus"></span> Read&nbsp;More</a>
       </div>
 
       <div class="tag">
@@ -39,7 +39,7 @@ layout: default
     <ul class="pager">
 
       {% if paginator.previous_page %}
-        <li class="previous"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><span aria-hidden="true">&larr;</span> Prev</a></li>
+        <li class="previous"><a href="{{ paginator.previous_page_path | prepend: site.url | replace: '//', '/' }}"><span aria-hidden="true">&larr;</span> Prev</a></li>
       {% else %}
         <li class="previous disabled"><a><span aria-hidden="true">&larr;</span> Prev</a></li>
       {% endif %}
