@@ -66,6 +66,9 @@ a:visited {
 	background: #fff;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 30px rgba(10,10,0,0.1) inset;
 }
+.list-item a {
+	color: #539e12;
+}
 .post-content {
 	font-size: 16px;
 }
@@ -80,9 +83,6 @@ a:visited {
 	margin-left: -10px;
 	padding: 5px 10px;
 	border-left: 5px solid #539e12;
-}
-.post-title a {
-	color: #539e12;
 }
 .post-content {
 	font-size: 20px;
