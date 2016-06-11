@@ -108,3 +108,7 @@ a:visited {
 .pagination {
 	display: block;
 }
+
+.post-meta {
+	padding: 20px 0;
+}
