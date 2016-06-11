@@ -1,8 +1,13 @@
 window.onload = function() {
 	
-	var btn = $('#btn');
+	var btn = document.getELementsByClassName('btn');
 	console.log('1');
-	btn.addEventListener('click', bundle);
+	console.log(btn);
+	for (var i = 0, len = btn.length; i < len; ++i) {
+
+		btn[i].addEventListener('click', bundle);		
+	}
+	
 }
 
 function bundle() {
