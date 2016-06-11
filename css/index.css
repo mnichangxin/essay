@@ -112,6 +112,7 @@ a:visited {
 /* post */
 .post-meta {
 	padding: 20px 0;
+	border-bottom: 1px solid #539e12;
 }
 .post-tag {
 	margin-left: 20px;
