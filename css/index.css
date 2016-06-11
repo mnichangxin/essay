@@ -73,13 +73,13 @@ a:visited {
 	padding: 10px 0;
 	text-indent: 2px;
 	font: 16px 'Microsoft YaHei';
-	color: #1f9edd;
-	border-bottom: 1px solid #1f9edd;
+	color: #539e12;
+	border-bottom: 1px solid #539e12;
 }
 .post-title {
 	margin-left: -10px;
 	padding: 5px 10px;
-	border-left: 5px solid #1f9edd;
+	border-left: 5px solid #539e12;
 }
 .post-content {
 	font-size: 20px;
@@ -97,7 +97,7 @@ a:visited {
 	margin-top: 30px;
 	padding-top: 20px;
 	padding-bottom: 10px;
-	border-top: 1px solid #1f9edd;
+	border-top: 1px solid #539e12;
 	font-size: 16px;
 	color: #1f9edd;
 	word-spacing: 3px;
