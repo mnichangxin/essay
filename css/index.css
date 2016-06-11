@@ -80,6 +80,8 @@ a:visited {
 	margin-left: -10px;
 	padding: 5px 10px;
 	border-left: 5px solid #539e12;
+}
+.post-title a {
 	color: #539e12;
 }
 .post-content {
