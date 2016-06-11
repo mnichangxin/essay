@@ -40,6 +40,7 @@
 @media (max-width: 480px) {
 
 	.to-top {
+		display: none;
 		bottom: 120px;
 		right: 10px;
 		height: 30px;
