@@ -10,7 +10,7 @@ layout: default
 
     <p class="post-meta"><span class="glyphicon glyphicon-calendar"> <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
 
-    {% for tag in page.tags %}<span class="glyphicon glyphicon-tag"></span> <span>{{ tag }}</span>{% endfor %}
+    {% for tag in page.tags %}<span class="glyphicon glyphicon-tag"></span><span>{{ tag }}</span> {% endfor %}
 
     {% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
 
