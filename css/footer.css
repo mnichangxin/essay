@@ -9,8 +9,11 @@ footer {
 }
 .copy {
 	height: 50px;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 50px;
 	color: #fff;
 	text-align: center;
+}
+.copy a {
+	color: #fff;
 }
