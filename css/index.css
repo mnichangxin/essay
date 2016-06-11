@@ -80,6 +80,7 @@ a:visited {
 	margin-left: -10px;
 	padding: 5px 10px;
 	border-left: 5px solid #539e12;
+	color: #539e12;
 }
 .post-content {
 	font-size: 20px;
@@ -99,7 +100,7 @@ a:visited {
 	padding-bottom: 10px;
 	border-top: 1px solid #539e12;
 	font-size: 16px;
-	color: #1f9edd;
+	color: #539e12;
 	word-spacing: 3px;
 }
 .pagination {
