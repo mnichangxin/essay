@@ -26,6 +26,9 @@ function scrollHandler() {
 
 function btnHandler() {
 
+	document.documentElement.scrollTop = document.body.scrollTop == 0;
+
+	/*
 	var timer = setInterval(function() {
 
 		if (document.documentElement.scrollTop = document.body.scrollTop != 0) {
@@ -37,4 +40,5 @@ function btnHandler() {
 		}
 
 	}, 0,5);
+	*/
 }

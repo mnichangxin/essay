@@ -16,7 +16,8 @@
 
 /* to-top */
 .to-top {
-	position: absolute;
+	display: none;
+	position: fixed;
 	bottom: 150px;
 	right: 50px;
 	height: 60px;
