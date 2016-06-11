@@ -1,3 +1,8 @@
+---
+	title: "新的jekyll模板--Essay"
+	tags: jekyll 模板
+---
+
 ## on template
 
 This template is to write a essay, based on a customized Jekyll, and being perfected, now out in the open, welcome to use.
@@ -28,3 +33,4 @@ This template is to write a essay, based on a customized Jekyll, and being perfe
 * Weixin: lichangxin678
 
 * Email: mnichangxin@163.com
+
