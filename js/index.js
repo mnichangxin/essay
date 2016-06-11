@@ -1,6 +1,6 @@
 window.onload = function() {
 	
-	var btn = document.getELementsByClassName('btn');
+	var btn = document.getELementsByClass('btn');
 	console.log('1');
 	console.log(btn);
 	for (var i = 0, len = btn.length; i < len; ++i) {
