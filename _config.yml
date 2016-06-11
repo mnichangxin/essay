@@ -2,8 +2,9 @@
 title: essay
 title_description: 这里有诗和远方的遐想
 email: mnichangxin@163.com
+baseurl: ""
 url: "http://mnichangxin.github.io/essay"
-static_url: "/static"
+static_url: "./static"
 github_username: mnichangxin
 
 # Build settings
