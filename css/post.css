@@ -36,3 +36,15 @@
 .up {
 	display: inline-block;
 }
+
+@media (max-width: 480px) {
+
+	.to-top {
+		bottom: 120px;
+		right: 10px;
+		height: 30px;
+		width: 20px;
+		line-height:30px;
+		font-size: 15px;
+	}
+}
