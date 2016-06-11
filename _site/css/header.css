@@ -1,0 +1,37 @@
+/* header */
+.header {
+	height: 300px;
+	background: #539e12;
+}
+.title {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.text-center {
+	font-family: 'sans-serif';
+	color: #fff;
+}
+.title h3 {
+	margin-top: 40px;
+}
+.nav-menu {
+	padding-top: 30px;
+}
+.nav-pills {
+	text-align: center;
+}
+.nav-pills > li {
+	float: none;
+	display: inline-block;
+}
+.nav-pills > li > a {
+	color: #fff;
+}
+.nav-pills > li > a:hover {
+	background: #514946;
+}
+
+/* default */
+.page-content {
+	padding: 100px 10px;
+}

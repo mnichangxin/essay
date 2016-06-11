@@ -1,63 +1,3 @@
-@charset utf-8;
-
-html{
-	height: 100%;
-}
-body {
-	position: relative;
-	min-height: 100%;
-	background: url(../static/img/texture.jpg);
-	background-size: 100% 100%;
-}
-ul, li {
-	padding: 0;
-	list-style: none;
-}
-a,
-a:hover,
-a:visited {
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* header */
-.header {
-	height: 300px;
-	background: #539e12;
-}
-.title {
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
-.text-center {
-	font-family: 'sans-serif';
-	color: #fff;
-}
-.title h3 {
-	margin-top: 40px;
-}
-.nav-menu {
-	padding-top: 30px;
-}
-.nav-pills {
-	text-align: center;
-}
-.nav-pills > li {
-	float: none;
-	display: inline-block;
-}
-.nav-pills > li > a {
-	color: #fff;
-}
-.nav-pills > li > a:hover {
-	background: #514946;
-}
-
-/* default */
-.page-content {
-	padding: 100px 10px;
-}
-
 /* index */
 .post-list .list-item {
 	margin-bottom: 20px;
@@ -66,6 +6,9 @@ a:visited {
 	background: #fff;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 30px rgba(10,10,0,0.1) inset;
 }
+.list-item a {
+	color: #539e12;
+}
 .post-content {
 	font-size: 16px;
 }
@@ -73,13 +16,13 @@ a:visited {
 	padding: 10px 0;
 	text-indent: 2px;
 	font: 16px 'Microsoft YaHei';
-	color: #1f9edd;
-	border-bottom: 1px solid #1f9edd;
+	color: #539e12;
+	border-bottom: 1px solid #539e12;
 }
 .post-title {
 	margin-left: -10px;
 	padding: 5px 10px;
-	border-left: 5px solid #1f9edd;
+	border-left: 5px solid #539e12;
 }
 .post-content {
 	font-size: 20px;
@@ -97,9 +40,9 @@ a:visited {
 	margin-top: 30px;
 	padding-top: 20px;
 	padding-bottom: 10px;
-	border-top: 1px solid #1f9edd;
+	border-top: 1px solid #539e12;
 	font-size: 16px;
-	color: #1f9edd;
+	color: #539e12;
 	word-spacing: 3px;
 }
 .pagination {
