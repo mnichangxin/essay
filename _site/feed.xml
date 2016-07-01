@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>essay</title>
+    <description></description>
+    <link>http://mnichangxin.github.io/essay/</link>
+    <atom:link href="http://mnichangxin.github.io/essay/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 11 Jun 2016 18:00:25 +0800</pubDate>
+    <lastBuildDate>Sat, 11 Jun 2016 18:00:25 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Welcome to Jekyll!</title>
+        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 10 Jun 2016 13:06:38 +0800</pubDate>
+        <link>http://mnichangxin.github.io/essay/java/2016/06/10/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://mnichangxin.github.io/essay/java/2016/06/10/welcome-to-jekyll.html</guid>
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+        
+        <category>Java</category>
+        
+      </item>
+    
+      <item>
+        <title>BFC(块级格式化上下文)</title>
+        <description>&lt;p&gt;这几天研究了 &lt;code class=&quot;highlighter-rouge&quot;&gt;W3C&lt;/code&gt; 的官方文档，想寻找些思路，提高一下 &lt;code class=&quot;highlighter-rouge&quot;&gt;CSS&lt;/code&gt; 水平，先从 &lt;code class=&quot;highlighter-rouge&quot;&gt;BFC&lt;/code&gt; 说起吧：&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;常规流&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;常规流中的盒属于一个格式化上下文，可能是块或是内联，但不能都是（既是块又是内联）。块级盒参与块格式化上下文，内联级盒参与内联格式化上下文&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;本文讨论 &lt;code class=&quot;highlighter-rouge&quot;&gt;BFC&lt;/code&gt; (块级格式化上下文)，暂不讨论 &lt;code class=&quot;highlighter-rouge&quot;&gt;IFC&lt;/code&gt; (内联格式化上下文)&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;块级格式化上下文&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BFC&lt;/code&gt; 被新建立，满足下列任一条件即可：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;浮动元素(确切的说除了 &lt;code class=&quot;highlighter-rouge&quot;&gt;none&lt;/code&gt; 以外的值)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;绝对定位元素&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;非块盒的块容器（ &lt;code class=&quot;highlighter-rouge&quot;&gt;inline-block&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;table-cell&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;table-caption&lt;/code&gt; ）&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;overflow&lt;/code&gt; 不为 &lt;code class=&quot;highlighter-rouge&quot;&gt;visible&lt;/code&gt; 的块盒&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在一个块格式化上下文中，盒在竖直方向一个接一个地放置，从包含块的顶部开始。两个兄弟盒之间的竖直距离由 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin&lt;/code&gt; 属性决定。同一个块格式化上下文中的相邻块级盒之间的竖直 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin&lt;/code&gt; 会合并&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在一个块格式化上下文中，每个盒的 &lt;code class=&quot;highlighter-rouge&quot;&gt;left&lt;/code&gt; 外边挨着包含块的 &lt;code class=&quot;highlighter-rouge&quot;&gt;left&lt;/code&gt; 边（对于从右向左的格式化， &lt;code class=&quot;highlighter-rouge&quot;&gt;right&lt;/code&gt; 边挨着）。即使存在浮动（尽管一个盒的行盒可能会因为浮动收缩），这也成立。除非该盒建立了一个新的块格式化上下文（这种情况下，该盒自身可能会因为浮动变窄）&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;bfc&quot;&gt;BFC的应用&lt;/h2&gt;
+
+</description>
+        <pubDate>Mon, 06 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://mnichangxin.github.io/essay/css/2016/06/06/bfc.html</link>
+        <guid isPermaLink="true">http://mnichangxin.github.io/essay/css/2016/06/06/bfc.html</guid>
+        
+        <category>CSS</category>
+        
+        <category>BFC</category>
+        
+        <category>格式化上下文</category>
+        
+        
+        <category>CSS</category>
+        
+      </item>
+    
+      <item>
+        <title>Java IO流接口</title>
+        <description>&lt;p&gt;Java IO流的接口实在很多，在这里记录一下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;文件类&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;文件字节输入输出流&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.FileInputStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.FileOutputStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;字符输入输出流&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.InputStreamReader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.OutputStreamReader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;数据字节输入输出流&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.DataInputStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.DataOutputStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;文件字符串输入输出流&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.FileWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.FileReader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;缓冲字节输入输出流&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.BufferedReader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.BufferedWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;随机文件输入输出流&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.RandomAccessFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;文件异常处理&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.IOException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 05 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://mnichangxin.github.io/essay/java/2016/06/05/java-io.html</link>
+        <guid isPermaLink="true">http://mnichangxin.github.io/essay/java/2016/06/05/java-io.html</guid>
+        
+        <category>Java</category>
+        
+        <category>IO流</category>
+        
+        
+        <category>Java</category>
+        
+      </item>
+    
+      <item>
+        <title>JavaScript this关键字</title>
+        <description>&lt;p&gt;说道 &lt;code class=&quot;highlighter-rouge&quot;&gt;JavaScript&lt;/code&gt; 高大上的技巧，&lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 关键字莫过之一了，而且 &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 的使用频率相当高。不同与 &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; 中 &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 的三种用法，&lt;code class=&quot;highlighter-rouge&quot;&gt;JavaScript&lt;/code&gt; 的 &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 明确说只有一种用法，那就是 &lt;strong&gt;指向调用函数的对象&lt;/strong&gt; 。下面分三种情况讨论：&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;作为对象方法调用&lt;/h2&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这一种情况， &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 绑定了调用函数的 &lt;code class=&quot;highlighter-rouge&quot;&gt;obj&lt;/code&gt; 对象&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;作为函数调用&lt;/h2&gt;
+
+&lt;p&gt;这种情况其实和第一种情况类似，请看：&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+    &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这里的 &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 指向了全局 &lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt; , 类比第一种情况，可以写成这样(假设可以)：&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;呵呵~~看出个所以然了吧，这不就是把全局 &lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt; 当做 &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 绑定的对象嘛！&lt;/p&gt;
+
+&lt;p&gt;还有一种特例就是，对象函数的内部函数会丢失当前对象 &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 的引用，请看：&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;boo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//0&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;明显，&lt;code class=&quot;highlighter-rouge&quot;&gt;boo&lt;/code&gt; 函数的 &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 指向了全局 &lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; 的值并没有因此改变。遇到这种情况，可以这样解决：&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//保存当前this引用&lt;/span&gt;
+          &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;that&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;boo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这里用一个 &lt;code class=&quot;highlighter-rouge&quot;&gt;that&lt;/code&gt; 变量保存了 &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 引用，以致于 &lt;code class=&quot;highlighter-rouge&quot;&gt;that&lt;/code&gt; 指向当前对象。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;作为构造函数调用&lt;/h2&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;当构造函数被实例化时，&lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 自动指向实例化对象。&lt;/p&gt;
+
+&lt;p&gt;总结以上三种情况，都归结于一句话：&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 指向调用函数的对象&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;apply--call&quot;&gt;apply() 和 call()&lt;/h2&gt;
+
+&lt;p&gt;最后，说一下 &lt;code class=&quot;highlighter-rouge&quot;&gt;JavaScritp&lt;/code&gt; 提供的改变 &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 绑定的方法 &lt;code class=&quot;highlighter-rouge&quot;&gt;apply()&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;call()&lt;/code&gt; 。这两个方法都接收两个参数：要应用的对象和传入的参数，它们唯一的区别是 &lt;code class=&quot;highlighter-rouge&quot;&gt;apply()&lt;/code&gt; 的参数传入一个数组，&lt;code class=&quot;highlighter-rouge&quot;&gt;call()&lt;/code&gt; 只能一个一个的传入参数。知其一必知其二，下面我们拿 &lt;code class=&quot;highlighter-rouge&quot;&gt;apply()&lt;/code&gt; 说事：&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+   
+   &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//0&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;函数 &lt;code class=&quot;highlighter-rouge&quot;&gt;Foo&lt;/code&gt; 绑定了对象 &lt;code class=&quot;highlighter-rouge&quot;&gt;obj&lt;/code&gt; ，于是 &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt; 指向 &lt;code class=&quot;highlighter-rouge&quot;&gt;obj&lt;/code&gt; ，这是 &lt;code class=&quot;highlighter-rouge&quot;&gt;apply()&lt;/code&gt; 最简单的用法。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;apply()&lt;/code&gt; 还有一个很有用的用法，说明一下：&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//5&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;数组被传入 &lt;code class=&quot;highlighter-rouge&quot;&gt;Math.max()&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;Math.min()&lt;/code&gt; 方法中，第一个参数置空，表示没有对象调用。它们返回了数组的最大值和最小值&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 02 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://mnichangxin.github.io/essay/javascript/2016/06/02/js-this.html</link>
+        <guid isPermaLink="true">http://mnichangxin.github.io/essay/javascript/2016/06/02/js-this.html</guid>
+        
+        <category>JavaScript技巧</category>
+        
+        <category>this</category>
+        
+        
+        <category>JavaScript</category>
+        
+      </item>
+    
+      <item>
+        <title>W3C之CSS标准 &#39;Box model&#39; 译注</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;译者注：&lt;/strong&gt; 为了更详细了解 &lt;code class=&quot;highlighter-rouge&quot;&gt;W3C&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;CSS标准&lt;/code&gt; 的细节，于是试着读了 &lt;code class=&quot;highlighter-rouge&quot;&gt;W3C&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;CSS标准&lt;/code&gt; 的第8章 &lt;a href=&quot;https://www.w3.org/TR/2011/REC-CSS2-20110607/box.html#box-model&quot;&gt;Box model&lt;/a&gt;。全是英文啊(。﹏。)，本身英文水平就不高，借助了翻译工具一边翻译一边理解。最后，试着全章翻译记录一下吧。注：文章翻译有个人理解，稍有偏差和瑕疵哦&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;8 盒模型&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;8.1 盒尺寸&lt;/h2&gt;
+
+&lt;p&gt;每一个盒子有一个内容区域（例如，文本，图像等）和可选的周边填充，边界和边缘区域，每个区域的大小是由下面的属性定义。下面的图展示了边缘、边框和填充这些区域的关系：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xr2ek.com1.z0.glb.clouddn.com/blog/image/box-model1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;外边距，边框，和内边距可以细分为上，右，下，左几部分(比如，在上图中，&lt;code class=&quot;highlighter-rouge&quot;&gt;LM&lt;/code&gt; 指的是左外边距，&lt;code class=&quot;highlighter-rouge&quot;&gt;RP&lt;/code&gt; 指右内边距，&lt;code class=&quot;highlighter-rouge&quot;&gt;TB&lt;/code&gt; 指上边框等)。&lt;/p&gt;
+
+&lt;p&gt;每个部分的边界（内容，内边距，边框，外边距）称之为 &lt;code class=&quot;highlighter-rouge&quot;&gt;边缘&lt;/code&gt;，所以每个盒子都有四个边缘：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;内容边缘或内边缘&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;内容边缘由内容的&lt;a href=&quot;https://www.w3.org/TR/CSS2/visudet.html#Computing_widths_and_margins&quot;&gt;宽度&lt;/a&gt;和&lt;a href=&quot;https://www.w3.org/TR/CSS2/visudet.html#Computing_heights_and_margins&quot;&gt;高度&lt;/a&gt;撑起，通常取决于元素的&lt;a href=&quot;https://www.w3.org/TR/CSS2/conform.html#rendered-content&quot;&gt;渲染内容&lt;/a&gt;大小。它的四个边缘定义了盒子的内容&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;内边距边缘&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;内边距边缘紧靠着盒子的内边距外面。如果内边距为 &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;，内边距边缘就是内容边缘。它的四个边缘定义了盒子的内边距&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;边框边缘&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;边框边缘紧靠着盒子的边框。如果边框宽度为 &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;，边框边缘就是内边距边缘。它的四个边缘定义了盒子的边框&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;外边距边缘或内边缘&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;外边距边缘紧靠着外边距。如果外边距为 &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;，外边距边缘就是边框边缘。它的四个边缘定义了盒子的外边距&lt;/p&gt;
+
+&lt;p&gt;每个边缘都可以细分为上，下，左，右几部分&lt;/p&gt;
+
+&lt;p&gt;盒子内容区域的尺寸——内容的宽度和高度，通常取决与几个因素：盒子元素是否设置了&lt;a href=&quot;https://www.w3.org/TR/CSS2/visudet.html#propdef-width&quot;&gt;宽&lt;/a&gt;和&lt;a href=&quot;https://www.w3.org/TR/CSS2/visudet.html#propdef-width&quot;&gt;高&lt;/a&gt;的属性，盒子里面是否包含文本或其它盒子，这个盒子是不是表格等。关于盒子的宽和高的描述详见&lt;a href=&quot;https://www.w3.org/TR/CSS2/visudet.html&quot;&gt;可视化格式模型&lt;/a&gt;部分&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;8.2 外边距，外边距和边框的例子&lt;/h2&gt;
+
+&lt;p&gt;这个例子说明了边缘、填充和边框的关系。这是一个 &lt;code class=&quot;highlighter-rouge&quot;&gt;HTML&lt;/code&gt; 文档：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Examples of margins, padding, and borders&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;style &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+          &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;yellow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+          &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+          &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                                       &lt;span class=&quot;c&quot;&gt;/* No borders set */&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+          &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;                &lt;span class=&quot;c&quot;&gt;/* text color is white */&lt;/span&gt; 
+          &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;blue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;            &lt;span class=&quot;c&quot;&gt;/* Content, padding will be blue */&lt;/span&gt;
+          &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+          &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/* Note 0px padding right */&lt;/span&gt;
+          &lt;span class=&quot;nl&quot;&gt;list-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;none&lt;/span&gt;             &lt;span class=&quot;c&quot;&gt;/* no glyphs before a list item */&lt;/span&gt;
+                                       &lt;span class=&quot;c&quot;&gt;/* No borders set */&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.withborder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;nl&quot;&gt;border-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dashed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+          &lt;span class=&quot;nl&quot;&gt;border-width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;medium&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;        &lt;span class=&quot;c&quot;&gt;/* sets border width on all sides */&lt;/span&gt;
+          &lt;span class=&quot;nl&quot;&gt;border-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;lime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;First element of list&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;withborder&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Second element of list is
+             a bit longer to illustrate wrapping.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.w3.org/TR/CSS2/conform.html#doctree&quot;&gt;节点树&lt;/a&gt;里有一个 &lt;code class=&quot;highlighter-rouge&quot;&gt;ul&lt;/code&gt; 元素包含这两个 &lt;code class=&quot;highlighter-rouge&quot;&gt;li&lt;/code&gt; 元素&lt;/p&gt;
+
+&lt;p&gt;第一个图首先说明了这个例子将产生什么。第二个图展示了 &lt;code class=&quot;highlighter-rouge&quot;&gt;ul&lt;/code&gt; 元素的外边距，内边距和边框还有 &lt;code class=&quot;highlighter-rouge&quot;&gt;li&lt;/code&gt; 元素的空间关系&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xr2ek.com1.z0.glb.clouddn.com/blog/image/box-model2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注意：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;每个 &lt;code class=&quot;highlighter-rouge&quot;&gt;li&lt;/code&gt; 盒子的&lt;a href=&quot;https://www.w3.org/TR/CSS2/box.html#content-width&quot;&gt;内容宽度&lt;/a&gt;计算自上而下；每个 &lt;code class=&quot;highlighter-rouge&quot;&gt;li&lt;/code&gt; 盒子的&lt;a href=&quot;https://www.w3.org/TR/CSS2/visuren.html#containing-block&quot;&gt;包含块&lt;/a&gt;都是由 &lt;code class=&quot;highlighter-rouge&quot;&gt;ul&lt;/code&gt; 元素创建&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;每个 &lt;code class=&quot;highlighter-rouge&quot;&gt;li&lt;/code&gt; 盒子的高度取决于&lt;a href=&quot;https://www.w3.org/TR/CSS2/box.html#content-height&quot;&gt;内容高度&lt;/a&gt;加上顶部和底部的填充，边框宽度还有外边距。注意两个 &lt;code class=&quot;highlighter-rouge&quot;&gt;li&lt;/code&gt; 盒子垂直方向上的&lt;a href=&quot;https://www.w3.org/TR/CSS2/box.html#collapsing-margins&quot;&gt;折叠&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;li&lt;/code&gt; 盒子的右填充被设为 &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;。第二幅图明显可以看出来&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;li&lt;/code&gt; 盒子的外边距是透明的——外边距总是透明的——所以可以透过看到 &lt;code class=&quot;highlighter-rouge&quot;&gt;ul&lt;/code&gt; 的黄色的背景色&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;第二个 &lt;code class=&quot;highlighter-rouge&quot;&gt;li&lt;/code&gt; 节点指定了一个虚线边框(&lt;a href=&quot;https://www.w3.org/TR/CSS2/box.html#propdef-border-style&quot;&gt;border-style&lt;/a&gt;属性)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;margin-top-margin-right-margin-bottom-margin-left-margin&quot;&gt;8.3 外边距属性：&lt;code class=&quot;highlighter-rouge&quot;&gt;margin-top&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-right&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-bottom&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-left&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;margin&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;外边距属性指定了一个盒子&lt;a href=&quot;https://www.w3.org/TR/CSS2/box.html#box-margin-area&quot;&gt;外部区域&lt;/a&gt;的宽度。&lt;a href=&quot;https://www.w3.org/TR/CSS2/box.html#propdef-margin&quot;&gt;margin&lt;/a&gt;属性可以指定为上右下左四个值。这个属性适用于所有元素，但垂直边缘不会对未替换的内联元素产生任何影响&lt;/p&gt;
+
+&lt;p&gt;本节定义的 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;margin-width&amp;gt;&lt;/code&gt; 值类型，它可以是以下几个值：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;长度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;指定的固定宽度&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;百分比&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;按照百分比指定&lt;a href=&quot;https://www.w3.org/TR/CSS2/visuren.html#containing-block&quot;&gt;包含块&lt;/a&gt;的宽度&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;auto(自动)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;auto&lt;/code&gt; 的计算详见 &lt;a href=&quot;https://www.w3.org/TR/CSS2/visudet.html#Computing_widths_and_margins&quot;&gt;calculating widths and margins&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;允许的边值属性的负值，但可能指定特定的范围&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;margin-top&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-bottom&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;margin-width&amp;gt; | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值： &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素，除表格标题、表格和内联表格外&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： 取决于包含块的宽度&lt;/p&gt;
+
+&lt;p&gt;媒体查询： &lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值： 指定的值或百分比&lt;/p&gt;
+
+&lt;p&gt;这些属性对非替换内联元素有没有影响&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;margin-right&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-left&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;margin-width&amp;gt; | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值： &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素，除表格标题、表格和内联表格外&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： 取决于包含块的宽度&lt;/p&gt;
+
+&lt;p&gt;媒体查询： &lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值： 指定的值或百分比&lt;/p&gt;
+
+&lt;p&gt;这些属性设置了盒子的顶部，右边，底部和左边的外边距&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;margin-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;margin&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;margin-width&amp;gt;{1到4个值} | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值： 参见上述属性的值&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素，除表格标题、表格和内联表格外&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： 取决于包含块的宽度&lt;/p&gt;
+
+&lt;p&gt;媒体查询： &lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值： 参见上述属性的值&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;margin&lt;/code&gt; 属性比起来同时设置 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-top&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-right&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-bottom&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-left&lt;/code&gt; 更为简洁，但样式是一模一样的&lt;/p&gt;
+
+&lt;p&gt;如果 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin&lt;/code&gt; 只有一个值，它设置所有的四个属性；如果有两个值，则顶部和底部被设为第一个值，右边和左边被设为第二个值；如果有三个值，顶部被设为第一个值，左、右设置为第二个值，底部设置为第三个值；如果有四个值，它们分别适用于上、右、下、左&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2em&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;/* all margins set to 2em */&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1em&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2em&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;/* top &amp;amp; bottom = 1em, right &amp;amp; left = 2em */&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1em&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2em&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3em&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;/* top=1em, right=2em, bottom=3em, left=2em */&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上面最后一条规则的例子:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;margin-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;margin-right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;margin-bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;margin-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;/* copied from opposite side (right) */&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;collapsing-margins&quot;&gt;8.3.1 折叠外边距(Collapsing margins)&lt;/h3&gt;
+
+&lt;p&gt;在CSS中，两个或两个以上的盒子的外边距(可能是也可能不是相邻元素)可能结合成单个的外边距。这种现象称之为 &lt;code class=&quot;highlighter-rouge&quot;&gt;折叠&lt;/code&gt; ，结果就是合并的外边距称之为 &lt;code class=&quot;highlighter-rouge&quot;&gt;折叠外边距(collapsed margin)&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;译者注：这里是重点&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;相邻盒子垂直方向上的折叠外边距，除了：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;根元素的盒子不折叠&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果一个有空隙的元素的上下外边距相邻，其外边距将同其后同胞的相邻外边距折叠，但不同父块的下外边距折叠&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;水平外边距不折叠。&lt;/p&gt;
+
+&lt;p&gt;两个外边距相邻，当且仅当：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;属于同一个块格式上下文档流块级框中&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;没有行盒、空隙、内边距和边框分隔它们&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;盒边缘垂直相邻，也就是说，满足以下形式之一：&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;盒上外边距及其第一个文档流内子盒的上外边距&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;盒下外边距及下一个文档流内的同胞盒的上外边距&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;如果父盒的高度计算值为 &lt;code class=&quot;highlighter-rouge&quot;&gt;auto&lt;/code&gt; ，其最后一个文档流内子盒的下外边距及父盒的下外边距&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;如果一个盒不建立新的块格式化上下文、 &lt;code class=&quot;highlighter-rouge&quot;&gt;min-height&lt;/code&gt; 计算值为零、 &lt;code class=&quot;highlighter-rouge&quot;&gt;height&lt;/code&gt;  计算值为零或 &lt;code class=&quot;highlighter-rouge&quot;&gt;auto&lt;/code&gt; 、没有在文档流内的子盒，其上下外边距&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;如果一个折叠外边距与另一外边距的任何一边相邻，则视二者相邻&lt;/p&gt;
+
+&lt;p&gt;注意：不是同胞或祖先关系的元素也可以产生相邻外边距&lt;/p&gt;
+
+&lt;p&gt;注意：上述规则表明了：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;一个浮动的盒子与其他的盒子不会发生外边距坍塌，即使是浮动盒子和它内部的正常流中的孩子们&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;自身建立了新的 &lt;code class=&quot;highlighter-rouge&quot;&gt;BFC&lt;/code&gt; 的元素的外边距不会与它的处于正常流的孩子们的外边距重叠&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;inline-block&lt;/code&gt; 盒子的外边距不会坍塌，即使是它内部的正常流中的孩子们&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;*　一个正常流元素的 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-bottom&lt;/code&gt; 与它下一个正常流的兄弟元素的 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-top&lt;/code&gt; 会产生折叠，除非它们之间存在间隙（&lt;code class=&quot;highlighter-rouge&quot;&gt;clearance&lt;/code&gt;）&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;一个正常流元素的 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-top&lt;/code&gt; 与其第一个正常流的子元素的 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-top&lt;/code&gt; 产生折叠，条件为父元素不包含 &lt;code class=&quot;highlighter-rouge&quot;&gt;padding&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;border&lt;/code&gt; ，子元素不包含 &lt;code class=&quot;highlighter-rouge&quot;&gt;clearance&lt;/code&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;一个 &lt;code class=&quot;highlighter-rouge&quot;&gt;height&lt;/code&gt; 为 &lt;code class=&quot;highlighter-rouge&quot;&gt;auto&lt;/code&gt; 并且 &lt;code class=&quot;highlighter-rouge&quot;&gt;min-height&lt;/code&gt; 为 &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; 的正常流元素的 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-bottom&lt;/code&gt; 会与其最后一个正常流子元素的 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-bottom&lt;/code&gt; 折叠，条件为父元素不包含 &lt;code class=&quot;highlighter-rouge&quot;&gt;padding&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;border&lt;/code&gt; ，子元素的 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-bottom&lt;/code&gt; 不与包含 &lt;code class=&quot;highlighter-rouge&quot;&gt;clearance&lt;/code&gt; 的 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-top&lt;/code&gt; 折叠&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;一个不包含 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-top&lt;/code&gt; 、&lt;code class=&quot;highlighter-rouge&quot;&gt;border-bottom&lt;/code&gt; 、&lt;code class=&quot;highlighter-rouge&quot;&gt;padding-top&lt;/code&gt; 、&lt;code class=&quot;highlighter-rouge&quot;&gt;padding-bottom&lt;/code&gt; 的正常流元素，并且其 &lt;code class=&quot;highlighter-rouge&quot;&gt;height&lt;/code&gt; 为 &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; 或 &lt;code class=&quot;highlighter-rouge&quot;&gt;auto&lt;/code&gt; ， &lt;code class=&quot;highlighter-rouge&quot;&gt;min-height&lt;/code&gt; 为 &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;，其里面也不包含行盒(&lt;code class=&quot;highlighter-rouge&quot;&gt;line box&lt;/code&gt;)，其自身的 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-top&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin-bottom&lt;/code&gt; 会折叠&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;当两个及以上外边距折叠，合并后的外边距宽度是发生折叠的外边距中的最大宽度。如果发生折叠的外边距中有负数，则为最大正数相邻外边距减去最小负数相邻外边距的绝对值。如果不存在正数外边距，则为零减去最小负数相邻外边距的绝对值&lt;/p&gt;
+
+&lt;p&gt;如果一个盒的上下外边距相邻，则外边距可能穿过盒而折叠 &lt;code class=&quot;highlighter-rouge&quot;&gt;Collapse Through It&lt;/code&gt; 。这种情况下，元素的定位取决于它同其他外边距折叠的元素的关系&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果该元素的外边距同其父元素的上外边距折叠，则该盒的上边框边缘同其父元盒的上边框边缘相同&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;否则，要么该元素的父元素的外边距不折叠，要么只有父元素的下外边距折叠。如果该元素下边框非零，则上边框边缘的位置不变&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;需要注意的是，被折叠穿过的元素的定位对其他外边距折叠的元素的定位无影响；其上边框边缘的定位仅用于布局其后代元素&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;padding-top-padding-right-padding-bottom-padding-left--padding&quot;&gt;8.4 内边距属性: &lt;code class=&quot;highlighter-rouge&quot;&gt;padding-top&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;padding-right&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;padding-bottom&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;padding-left&lt;/code&gt;, 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;padding&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;内边距属性指定了一个盒子&lt;a href=&quot;https://www.w3.org/TR/CSS2/box.html#box-padding-area&quot;&gt;内部区域&lt;/a&gt;的宽度。&lt;a href=&quot;https://www.w3.org/TR/CSS2/box.html#propdef-padding&quot;&gt;padding&lt;/a&gt;属性可以指定为上右下左四个值。这个属性适用于所有元素，但垂直边缘不会对未替换的内联元素产生任何影响&lt;/p&gt;
+
+&lt;p&gt;本节定义的 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;padding-width&amp;gt;&lt;/code&gt; 值类型，它可以是以下几个值：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;长度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;指定的固定宽度&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;百分比&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;按照百分比指定&lt;a href=&quot;https://www.w3.org/TR/CSS2/visuren.html#containing-block&quot;&gt;包含块&lt;/a&gt;的宽度&lt;/p&gt;
+
+&lt;p&gt;与外边距不同，内边距的边值属性不能为负值，与外边距一样，内边距的百分比值是指生成框的包含块的宽度&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;padding-top&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;padding-bottom&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;padding-bootom&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;padding-left&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;padding-width&amp;gt; | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值： &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素，除表格标题、表格和内联表格外&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： 取决于包含块的宽度&lt;/p&gt;
+
+&lt;p&gt;媒体查询： &lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值： 指定的值或百分比&lt;/p&gt;
+
+&lt;p&gt;这些属性设置了一个盒子的顶部，右边，底部和左填充&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;padding-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.3em&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;margin&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;padding-width&amp;gt; {1到4个值} | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值： 参见上述属性的值&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素，除表格标题、表格和内联表格外&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： 取决于包含块的宽度&lt;/p&gt;
+
+&lt;p&gt;媒体查询： &lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值： 参见上述属性的值&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;padding&lt;/code&gt; 属性比起来同时设置 &lt;code class=&quot;highlighter-rouge&quot;&gt;padding-top&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;padding-right&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;padding-bottom&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;padding-left&lt;/code&gt; 更为简洁，但样式是一模一样的&lt;/p&gt;
+
+&lt;p&gt;如果 &lt;code class=&quot;highlighter-rouge&quot;&gt;padding&lt;/code&gt; 只有一个值，它设置所有的四个属性；如果有两个值，则顶部和底部被设为第一个值，右边和左边被设为第二个值；如果有三个值，顶部被设为第一个值，左、右设置为第二个值，底部设置为第三个值；如果有四个值，它们分别适用于上、右、下、左&lt;/p&gt;
+
+&lt;p&gt;通过&lt;a href=&quot;https://www.w3.org/TR/CSS2/colors.html#propdef-background&quot;&gt;背景&lt;/a&gt;属性指定填充区域的表面颜色或图像:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+    &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1em&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上面的例子中指定一个 &lt;code class=&quot;highlighter-rouge&quot;&gt;1em&lt;/code&gt; 垂直填充（&lt;code class=&quot;highlighter-rouge&quot;&gt;padding-top&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;padding-bottom&lt;/code&gt;）和 &lt;code class=&quot;highlighter-rouge&quot;&gt;2em&lt;/code&gt; 的空白（&lt;code class=&quot;highlighter-rouge&quot;&gt;padding-right&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;pddding-left&lt;/code&gt; 填充）。&lt;code class=&quot;highlighter-rouge&quot;&gt;em&lt;/code&gt; 单位是相对于元素的字体大小：&lt;code class=&quot;highlighter-rouge&quot;&gt;1em&lt;/code&gt; 等于在使用字体的大小&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;8.5 边框属性&lt;/h2&gt;
+
+&lt;p&gt;边框属性指定了盒子边框边缘的宽度，颜色和样式。这些属性适用于所有元素。&lt;/p&gt;
+
+&lt;p&gt;值得注意的是，用户代理可能按照不同的方式渲染边框(例如，&lt;code class=&quot;highlighter-rouge&quot;&gt;button&lt;/code&gt; ,&lt;code class=&quot;highlighter-rouge&quot;&gt;menu&lt;/code&gt; 等)&lt;/p&gt;
+
+&lt;h3 id=&quot;border-top-width-border-right-width-border-bottom-width-border-left-width--border-width&quot;&gt;8.5.1 边框宽度：&lt;code class=&quot;highlighter-rouge&quot;&gt;border-top-width&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-right-width&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-bottom-width&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-left-width&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-width&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;边框宽度属性指定了&lt;a href=&quot;https://www.w3.org/TR/CSS2/box.html#box-border-area&quot;&gt;边框边缘&lt;/a&gt;的宽度。这个属性通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;boder-width&amp;gt;&lt;/code&gt; 指定值，可能是下面这些值：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;thin&lt;/code&gt; : 较细的边框&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;medium&lt;/code&gt; : 中等粗的边框&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;thick&lt;/code&gt; : 较粗的边框&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;length&amp;gt;&lt;/code&gt; : 指定一个确定的值。下面的关系一定是：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;thin&lt;/code&gt; &amp;lt;= &lt;code class=&quot;highlighter-rouge&quot;&gt;medium&lt;/code&gt; &amp;lt;= &lt;code class=&quot;highlighter-rouge&quot;&gt;thick&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;此外，这些宽度必须是常数&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;boder-top-width&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;border-right&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;border-bottom-width&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;border-left-width&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;border-width&amp;gt; | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值： &lt;code class=&quot;highlighter-rouge&quot;&gt;medium&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： &lt;code class=&quot;highlighter-rouge&quot;&gt;N/A&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;媒体查询： &lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值： 绝对长度；如果边框样式为 &lt;code class=&quot;highlighter-rouge&quot;&gt;none&lt;/code&gt; 或 &lt;code class=&quot;highlighter-rouge&quot;&gt;hidden&lt;/code&gt; 则为 &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;这些属性设定了盒子顶部，右边，底部，左边边框&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;border-width&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;border-width&amp;gt; {1-4个属性} | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值：参见上述属性&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： &lt;code class=&quot;highlighter-rouge&quot;&gt;N/A&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;媒体查询：&lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值：参见上述属性&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;border&lt;/code&gt; 属性比起来同时设置 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-top&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-right&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-bottom&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-left&lt;/code&gt; 更为简洁，但样式是一模一样的&lt;/p&gt;
+
+&lt;p&gt;如果 &lt;code class=&quot;highlighter-rouge&quot;&gt;border&lt;/code&gt; 只有一个值，它设置所有的四个属性；如果有两个值，则顶部和底部被设为第一个值，右边和左边被设为第二个值；如果有三个值，顶部被设为第一个值，左、右设置为第二个值，底部设置为第三个值；如果有四个值，它们分别适用于上、右、下、左&lt;/p&gt;
+
+&lt;p&gt;下面这个例子中，注释解释了上下左右各边的值：&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;border-width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;thin&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;                &lt;span class=&quot;c&quot;&gt;/* thin thin thin thin */&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;border-width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;thin&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;thick&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;          &lt;span class=&quot;c&quot;&gt;/* thin thick thin thick */&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;border-width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;thin&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;thick&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;medium&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;/* thin thick medium thick */&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;border-top-color-border-right-color-border-bottom-color-border-left-color--border-color&quot;&gt;8.5.2 边框颜色：&lt;code class=&quot;highlighter-rouge&quot;&gt;border-top-color&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-right-color&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-bottom-color&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-left-color&lt;/code&gt;, 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-color&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;边框颜色属性指定了盒子边框的颜色&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;border-top-color&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-right-color&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-bottom-color&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-left-color&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;color&amp;gt; | transparent | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值：&lt;code class=&quot;highlighter-rouge&quot;&gt;color&lt;/code&gt; 的颜色值&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： &lt;code class=&quot;highlighter-rouge&quot;&gt;N/A&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;媒体查询：&lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值：根据颜色值计算&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;border-color&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;[ &amp;lt;color&amp;gt; | transparent ] {1-4个值} | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值：&lt;code class=&quot;highlighter-rouge&quot;&gt;color&lt;/code&gt; 的颜色值&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： &lt;code class=&quot;highlighter-rouge&quot;&gt;N/A&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;媒体查询：&lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值：参见上述属性&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;border-color&lt;/code&gt; 属性设定了四个边框的颜色。它的值可能是以下：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;color&amp;gt;&lt;/code&gt; : 指定一个确定的值&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;transparent&lt;/code&gt; : 边框是透明的(即使它有宽度)&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;border-color&lt;/code&gt; 属性可能有1到4个值，但是不同于 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-width&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;如果一个元素的边框没有指定一个确定的值，用户代理强制 &lt;code class=&quot;highlighter-rouge&quot;&gt;color&lt;/code&gt; 属性的值作为边框颜色的计算值&lt;/p&gt;
+
+&lt;h3 id=&quot;border-top-style-border-right-style-border-bottom-style-border-left-style--border-style&quot;&gt;8.5.3 边框样式：&lt;code class=&quot;highlighter-rouge&quot;&gt;border-top-style&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-right-style&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-bottom-style&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-left-style&lt;/code&gt;, 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-style&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;边框样式属性指定了盒子边框的样式(&lt;code class=&quot;highlighter-rouge&quot;&gt;solid&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;double&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;dashed&lt;/code&gt; 等)。这个属性可以通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-style&lt;/code&gt; 指定值，值可能是以下：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;none&lt;/code&gt; : 无边框，边框宽度的计算值为零&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;hidden&lt;/code&gt; : 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;none&lt;/code&gt; 一样，除了 &lt;a href=&quot;https://www.w3.org/TR/CSS2/tables.html#border-conflict-resolution&quot;&gt;border conflict resolution&lt;/a&gt; for &lt;a href=&quot;https://www.w3.org/TR/CSS2/tables.html&quot;&gt;table elements&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dotted&lt;/code&gt; : 边框是一系列的点&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dashed&lt;/code&gt; : 边框是一系列的短线段&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;solid&lt;/code&gt; : 边框是一条线段&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;double&lt;/code&gt; : 边框是双实心线。它们之间的间隙等于边框宽度&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;groove&lt;/code&gt; : 边框看起来像是嵌入的三角&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ridge&lt;/code&gt; : 边框看起来好像是凸出的三角&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;inset&lt;/code&gt; : 边框看起来像内嵌&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;outset&lt;/code&gt; : 边框看起来像凸出&lt;/p&gt;
+
+&lt;p&gt;所有边框都是在盒子边框的背景上渲染的。&lt;code class=&quot;highlighter-rouge&quot;&gt;groove&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;rideg&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;inset&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;outset&lt;/code&gt; 的颜色取决于元素的边框颜色属性，但用户代理可能会选择自己的算法来计算实际使用的颜色。例如，如果 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-color&lt;/code&gt; 的的值为 &lt;code class=&quot;highlighter-rouge&quot;&gt;silver&lt;/code&gt;，然后用户代理可以使用从白色到深灰色的渐变颜色来表示一个倾斜的边框&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;border-top-style&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-right-style&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-bottom-style&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-left-style&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;border-style&amp;gt; | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值：&lt;code class=&quot;highlighter-rouge&quot;&gt;none&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： &lt;code class=&quot;highlighter-rouge&quot;&gt;N/A&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;媒体查询：&lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值：视情况而定&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;border-style&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;border-style&amp;gt; {1-4个值} | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值：参见上述属性&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： &lt;code class=&quot;highlighter-rouge&quot;&gt;N/A&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;媒体查询：&lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值：参见上述属性&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;border-style&lt;/code&gt; 属性设定了四个边框的样式。它可以有1到4个值，但和 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-width&lt;/code&gt; 不同&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nf&quot;&gt;#xy34&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;border-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dotted&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上面的例子，水平边框将是 &lt;code class=&quot;highlighter-rouge&quot;&gt;solid&lt;/code&gt; , 垂直边框将是 &lt;code class=&quot;highlighter-rouge&quot;&gt;dotted&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;border-top-border-right-border-bottom-border-left--border&quot;&gt;8.5.4 边框属性 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-top&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-right&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-bottom&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-left&lt;/code&gt;, 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;border&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;border-top&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-right&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-bottom&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;border-left&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;[ &amp;lt;border-width&amp;gt; || &amp;lt;border-style&amp;gt; || &amp;lt;border-top-color&amp;gt; ] | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值：参见上述属性&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： &lt;code class=&quot;highlighter-rouge&quot;&gt;N/A&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;媒体查询：&lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值：参见上述属性&lt;/p&gt;
+
+&lt;p&gt;这个属性设定了盒子的顶部，底部和左右的属性&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;border-bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;thick&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上面的规则将设置 &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; 边框的宽度，样式和颜色。省略值被设置为其初始值。因为下面的规则没有指定边框颜色，边框将由 &lt;code class=&quot;highlighter-rouge&quot;&gt;color&lt;/code&gt;属性指定颜色：&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;border-bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;thick&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;border&lt;/code&gt; :&lt;/p&gt;
+
+&lt;p&gt;值：&lt;code class=&quot;highlighter-rouge&quot;&gt;[ &amp;lt;border-width&amp;gt; || &amp;lt;border-style&amp;gt; || &amp;lt;border-top-color&amp;gt; ] | 继承&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;初始值：参见上述属性&lt;/p&gt;
+
+&lt;p&gt;适用于：所有元素&lt;/p&gt;
+
+&lt;p&gt;继承：&lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;百分比： &lt;code class=&quot;highlighter-rouge&quot;&gt;N/A&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;媒体查询：&lt;a href=&quot;https://www.w3.org/TR/CSS2/media.html#visual-media-group&quot;&gt;visual&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;计算值：参见上述属性&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;border&lt;/code&gt; 属性可以同时设置盒子边框的宽度，颜色和样式。不同于 &lt;code class=&quot;highlighter-rouge&quot;&gt;margin&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;padding&lt;/code&gt; 属性，&lt;code class=&quot;highlighter-rouge&quot;&gt;border&lt;/code&gt; 属性不能同时设置四个边框为不同值。要这样做，必须明确指定一个或多个边框的属性&lt;/p&gt;
+
+&lt;p&gt;例如，下面第一条规则就等于四条规则的集合：&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;border-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;border-right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;border-bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;border-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;因为，在一定程度上，规则有优先级，其中的规则指定的顺序是重要的&lt;/p&gt;
+
+&lt;p&gt;看下面这个例子：&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;border-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;black&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在上面的例子中，左边框的颜色是 &lt;code class=&quot;highlighter-rouge&quot;&gt;black&lt;/code&gt; , 其它边框颜色是 &lt;code class=&quot;highlighter-rouge&quot;&gt;red&lt;/code&gt; 。原因是 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-left&lt;/code&gt; 设置了宽度，样式和颜色。因为 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-left&lt;/code&gt; 没有明确指定颜色值，它将从 &lt;code class=&quot;highlighter-rouge&quot;&gt;color&lt;/code&gt; 的值获取。实际上，&lt;code class=&quot;highlighter-rouge&quot;&gt;color&lt;/code&gt; 属性和 &lt;code class=&quot;highlighter-rouge&quot;&gt;border-left&lt;/code&gt; 属性并不相关&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;8.6 格式化上下文中内联元素的盒模型&lt;/h2&gt;
+
+&lt;p&gt;对每个行盒而言，用户代理必须按视觉顺序（而非逻辑顺序）渲染其生成的行内盒的外边距、边框和内边距&lt;/p&gt;
+
+&lt;p&gt;当元素 &lt;code class=&quot;highlighter-rouge&quot;&gt;direction&lt;/code&gt; 属性值为 &lt;code class=&quot;highlighter-rouge&quot;&gt;ltr&lt;/code&gt; ，元素呈现的第一个行盒的最左生成盒拥有左外边距、左边框和左内边距，而元素呈现的最后一个行盒的最右生成盒拥有右内边距、右边框和右外边距&lt;/p&gt;
+
+&lt;p&gt;当元素 &lt;code class=&quot;highlighter-rouge&quot;&gt;direction&lt;/code&gt; 属性值为 &lt;code class=&quot;highlighter-rouge&quot;&gt;rtl&lt;/code&gt; ，元素呈现的第一个行盒的最右生成盒拥有右外边距、右边框和右内边距，而元素呈现的最后一个行盒的最左生成盒拥有左内边距、左边框和左外边距&lt;/p&gt;
+
+&lt;hr /&gt;
+
+</description>
+        <pubDate>Thu, 26 May 2016 00:00:00 +0800</pubDate>
+        <link>http://mnichangxin.github.io/essay/css/2016/05/26/box-model.html</link>
+        <guid isPermaLink="true">http://mnichangxin.github.io/essay/css/2016/05/26/box-model.html</guid>
+        
+        <category>盒模型</category>
+        
+        <category>格式化上下文</category>
+        
+        
+        <category>CSS</category>
+        
+      </item>
+    
+  </channel>
+</rss>

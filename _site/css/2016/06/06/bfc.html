@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="description" content="这几天研究了 W3C 的官方文档，想寻找些思路，提高一下 CSS 水平，先从 BFC 说起吧：">
+	<title>BFC(块级格式化上下文)</title>
+	<link rel="stylesheet" type="text/css" href="http://mnichangxin.github.io/essay/css/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="http://mnichangxin.github.io/essay/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="http://mnichangxin.github.io/essay/css/header.css">
+	<link rel="stylesheet" type="text/css" href="http://mnichangxin.github.io/essay/css/footer.css">
+	<link rel="stylesheet" type="text/css" href="http://mnichangxin.github.io/essay/css/index.css">
+	<link rel="stylesheet" type="text/css" href="http://mnichangxin.github.io/essay/css/post.css">
+</head>
+
+  <body>
+
+    <header>
+  <div class="container-fluid header">
+    <div class="row title">
+      <div class="col-md-12">
+        <h1 class="text-center"><span class="glyphicon glyphicon-pencil"></span> essay</h1>
+        <h3 class="text-center">这里有诗和远方的遐想</h3>
+      </div>
+    </div>
+    <div class="nav-menu">
+        <ul class="nav nav-pills">
+          <li>
+            <a href="http://mnichangxin.github.io/essay"><span class="glyphicon glyphicon-home"></span> Home</a>
+          </li>
+          <li class="Date">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-calendar"></span> Date <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              
+                <li><a href="http://mnichangxin.github.io/essay/java/2016/06/10/welcome-to-jekyll.html">Jun 10, 2016</a></li>
+              
+                <li><a href="http://mnichangxin.github.io/essay/css/2016/06/06/bfc.html">Jun 6, 2016</a></li>
+              
+                <li><a href="http://mnichangxin.github.io/essay/java/2016/06/05/java-io.html">Jun 5, 2016</a></li>
+              
+                <li><a href="http://mnichangxin.github.io/essay/javascript/2016/06/02/js-this.html">Jun 2, 2016</a></li>
+              
+                <li><a href="http://mnichangxin.github.io/essay/css/2016/05/26/box-model.html">May 26, 2016</a></li>
+              
+            </ul>
+          </li>
+          <!--
+          <li class="categories">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-list"></span> Category <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              
+
+                <li><a href=""><span class="badge">2</span> CSS</a></li>
+
+              
+
+                <li><a href=""><span class="badge">1</span> JavaScript</a></li>
+
+              
+
+                <li><a href=""><span class="badge">2</span> Java</a></li>
+
+              
+            </ul>
+          </li>
+          -->
+        </ul>
+    </div>
+  </div>
+</header>
+
+
+    <div class="container page-content">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+
+    <h1 class="post-title" itemprop="name headline">BFC(块级格式化上下文)</h1>
+
+    <p class="post-info"><span class="glyphicon glyphicon-calendar"> <time datetime="2016-06-06T00:00:00+08:00" itemprop="datePublished">Jun 6, 2016</time></span>
+
+    <span class="post-tag"><span class="glyphicon glyphicon-tag"></span> <span>CSS</span> <span class="glyphicon glyphicon-tag"></span> <span>BFC</span> <span class="glyphicon glyphicon-tag"></span> <span>格式化上下文</span> </span>
+
+    </p>
+
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>这几天研究了 <code class="highlighter-rouge">W3C</code> 的官方文档，想寻找些思路，提高一下 <code class="highlighter-rouge">CSS</code> 水平，先从 <code class="highlighter-rouge">BFC</code> 说起吧：</p>
+
+<h2 id="section">常规流</h2>
+
+<blockquote>
+  <p>常规流中的盒属于一个格式化上下文，可能是块或是内联，但不能都是（既是块又是内联）。块级盒参与块格式化上下文，内联级盒参与内联格式化上下文</p>
+</blockquote>
+
+<p>本文讨论 <code class="highlighter-rouge">BFC</code> (块级格式化上下文)，暂不讨论 <code class="highlighter-rouge">IFC</code> (内联格式化上下文)</p>
+
+<h2 id="section-1">块级格式化上下文</h2>
+
+<p><code class="highlighter-rouge">BFC</code> 被新建立，满足下列任一条件即可：</p>
+
+<ul>
+  <li>
+    <p>浮动元素(确切的说除了 <code class="highlighter-rouge">none</code> 以外的值)</p>
+  </li>
+  <li>
+    <p>绝对定位元素</p>
+  </li>
+  <li>
+    <p>非块盒的块容器（ <code class="highlighter-rouge">inline-block</code> , <code class="highlighter-rouge">table-cell</code> , <code class="highlighter-rouge">table-caption</code> ）</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">overflow</code> 不为 <code class="highlighter-rouge">visible</code> 的块盒</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>在一个块格式化上下文中，盒在竖直方向一个接一个地放置，从包含块的顶部开始。两个兄弟盒之间的竖直距离由 <code class="highlighter-rouge">margin</code> 属性决定。同一个块格式化上下文中的相邻块级盒之间的竖直 <code class="highlighter-rouge">margin</code> 会合并</p>
+</blockquote>
+
+<blockquote>
+  <p>在一个块格式化上下文中，每个盒的 <code class="highlighter-rouge">left</code> 外边挨着包含块的 <code class="highlighter-rouge">left</code> 边（对于从右向左的格式化， <code class="highlighter-rouge">right</code> 边挨着）。即使存在浮动（尽管一个盒的行盒可能会因为浮动收缩），这也成立。除非该盒建立了一个新的块格式化上下文（这种情况下，该盒自身可能会因为浮动变窄）</p>
+</blockquote>
+
+<h2 id="bfc">BFC的应用</h2>
+
+
+  </div>
+
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="BFC(块级格式化上下文)" data-title="BFC(块级格式化上下文)" data-url="/css/2016/06/06/bfc.html"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"essay"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0] 
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+
+</article>
+
+<div class="to-top">
+  <span class="up glyphicon glyphicon-chevron-up"></span>
+</div>
+    </div>
+
+    <!--
+<footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">essay</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>essay</li>
+          <li><a href="mailto:mnichangxin@163.com">mnichangxin@163.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/mnichangxin"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">mnichangxin</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+-->
+
+<footer>
+  
+</footer>
+
+    <script src="http://mnichangxin.github.io/essay/js/jquery-2.2.4.js"></script>
+    <script src="http://mnichangxin.github.io/essay/js/bootstrap.min.js"></script>
+    <script src="http://mnichangxin.github.io/essay/js/index.js"></script>
+  </body>
+
+</html>

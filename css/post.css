@@ -1,0 +1,51 @@
+/* post */
+.post-info {
+	padding: 20px 0;
+	border-bottom: 1px solid #539e12;
+	margin-bottom: 20px;
+}
+.post-tag {
+	margin-left: 20px;
+	text-indent: 5px;
+}
+
+/* duoshuo */
+.ds-thread {
+	margin-top: 50px;
+}
+
+/* to-top */
+.to-top {
+	display: none;
+	position: fixed;
+	bottom: 150px;
+	right: 50px;
+	height: 60px;
+	width: 50px;
+	background: #539e12;
+	opacity: 0.5;
+	line-height: 60px;
+	text-align: center;
+	font-size: 30px;
+	color: #fff;
+	cursor: pointer;
+}
+.to-top:hover {
+	opacity: 1;
+}
+.up {
+	display: inline-block;
+}
+
+@media (max-width: 480px) {
+
+	.to-top {
+		display: none;
+		bottom: 120px;
+		right: 10px;
+		height: 30px;
+		width: 20px;
+		line-height:30px;
+		font-size: 15px;
+	}
+}

@@ -1,0 +1,50 @@
+/* index */
+.post-list .list-item {
+	margin-bottom: 20px;
+	padding: 10px;
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 30px rgba(10,10,0,0.1) inset;
+}
+.list-item a {
+	color: #539e12;
+}
+.post-content {
+	font-size: 16px;
+}
+.date {
+	padding: 10px 0;
+	text-indent: 2px;
+	font: 16px 'Microsoft YaHei';
+	color: #539e12;
+	border-bottom: 1px solid #539e12;
+}
+.post-title {
+	margin-left: -10px;
+	padding: 5px 10px;
+	border-left: 5px solid #539e12;
+}
+.post-content {
+	font-size: 20px;
+}
+.read {
+	margin-top: 20px;
+}
+.more {
+	padding: 10px;
+	width: 20px;
+	border-radius: 20px;
+	background: #ccc;
+}
+.tag {
+	margin-top: 30px;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	border-top: 1px solid #539e12;
+	font-size: 16px;
+	color: #539e12;
+	word-spacing: 3px;
+}
+.pagination {
+	display: block;
+}

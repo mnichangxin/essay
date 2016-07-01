@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+
+    <div class="container page-content">
+        {{ content }}
+    </div>
+
+    {% include footer.html %}
+
+    <script src="{{ site.url }}/js/jquery-2.2.4.js"></script>
+    <script src="{{ site.url }}/js/bootstrap.min.js"></script>
+    <script src="{{ site.url }}/js/index.js"></script>
+  </body>
+
+</html>

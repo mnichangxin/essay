@@ -1,0 +1,20 @@
+/* footer */
+
+footer {
+	position: absolute;
+	bottom: 0;
+	height: 50px;
+	width: 100%;
+	background: #333333;
+}
+.copy {
+	margin-bottom: 0;
+	height: 50px;
+	font-size: 16px;
+	line-height: 50px;
+	color: #fff;
+	text-align: center;
+}
+.copy a {
+	color: #fff;
+}

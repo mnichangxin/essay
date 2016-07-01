@@ -1,0 +1,37 @@
+<header>
+  <div class="container-fluid header">
+    <div class="row title">
+      <div class="col-md-12">
+        <h1 class="text-center"><span class="glyphicon glyphicon-pencil"></span> {{ site.title }}</h1>
+        <h3 class="text-center">{{ site.title_description }}</h3>
+      </div>
+    </div>
+    <div class="nav-menu">
+        <ul class="nav nav-pills">
+          <li>
+            <a href="{{ site.url }}"><span class="glyphicon glyphicon-home"></span> Home</a>
+          </li>
+          <li class="Date">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-calendar"></span> Date <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {% for post in site.posts %}
+                <li><a href="{{ post.url | prepend: site.url }}">{{ post.date | date: "%b %-d, %Y" }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <!--
+          <li class="categories">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-list"></span> Category <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {% for category in site.categories %}
+
+                <li><a href=""><span class="badge">{{ category | last | size }}</span> {{ category | first }}</a></li>
+
+              {% endfor %}
+            </ul>
+          </li>
+          -->
+        </ul>
+    </div>
+  </div>
+</header>
