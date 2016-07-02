@@ -14,7 +14,8 @@ github_username: mnichangxin
 email: mnichangxin@163.com
 
 # markdown setting
-markdown: kramdown
+markdown: rouge
+#markdown: kramdown
 
 # paginate
 gems: [jekyll-paginate]
