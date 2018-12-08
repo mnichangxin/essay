@@ -1,4 +1,4 @@
-## on template
+## About template
 
 This template is to write a essay, based on a customized Jekyll, and being perfected, now out in the open, welcome to use.
 
@@ -11,38 +11,8 @@ In addition, if you use this theme, please point `Star` for this topic, thank yo
 
 ## contact
 
-* QQ: 768348335
-
-* Weixin: lichangxin678
-
-* [Weibo](http://weibo.com/123happylife)
-
 * Email: mnichangxin@163.com
 
 * [Personal Website](http://mnichangxin.com)
 
 ---
-
-## 关于模板
-
-这个模板是为了自己写写随笔用的，基于jekyll定制，并且正在完善之中，现公开出来，欢迎使用。
-
-接下来我将完善这些功能，也欢迎大家提些意见改进。
-
-* 分类功能还没有添加
-
-* 设计仍需完善
-
-另外，如果你使用了这个主题，请为这个主题点个 `star` ，谢谢。如果对这个主题有问题，或者有技术上的问题，欢迎联系我，我会尽力解答。也欢迎光临我的[技术博客](http://mnichangxin.com/blog)。
-
-## 联系方式
-
-* QQ: 768348335
-
-* Weixin: lichangxin678
-
-* [Weibo](http://weibo.com/123happylife)
-
-* Email: mnichangxin@163.com
-
-* [个人主页](http://mnichangxin.com)
